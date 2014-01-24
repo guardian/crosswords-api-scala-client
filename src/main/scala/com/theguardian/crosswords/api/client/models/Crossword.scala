@@ -46,7 +46,7 @@ case object Cryptic extends Type
 case object Quick extends Type
 
 case class Crossword(
-  creator: Creator,
+  creator: Option[Creator],
   date: LocalDate,
   dimensions: Dimensions,
   entries: List[Entry],

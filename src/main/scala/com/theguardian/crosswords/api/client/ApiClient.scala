@@ -10,8 +10,10 @@ object ApiClient {
   val apiEndpoint = "http://crosswords.guardianapis.com"
 }
 
-case class StatusError(statusCode: Int, statusLine: String) extends Exception
-case class ParseError(cause: JsError) extends Exception
+case class StatusError(statusCode: Int, statusLine: String)
+  extends Exception(s"Expected 200 OK, got $statusCode $statusLine")
+case class ParseError(cause: JsError)
+  extends Exception("Unable to parse JSON returned by Crosswords API")
 
 case class ApiClient(apiKey: String, http: Http, apiEndpoint: String = ApiClient.apiEndpoint) {
   /** Extracts A from the JSON string or throws ParseError */
