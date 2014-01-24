@@ -12,7 +12,6 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "net.databinder.dispatch" %% "dispatch-core" % "0.11.0",
   "com.typesafe.play" %% "play-json" % "2.2.0",
   "joda-time" % "joda-time" % "2.3",
   "org.specs2" %% "specs2" % "2.3.4" % "test"
