@@ -44,6 +44,7 @@ sealed trait Type
 
 case object Cryptic extends Type
 case object Quick extends Type
+case object Quiptic extends Type
 
 case class Crossword(
   creator: Option[Creator],
@@ -53,7 +54,7 @@ case class Crossword(
   hasNumbers: Boolean,
   name: String,
   number: Int,
-  pdf: String,
+  pdf: Option[String],
   randomCluesOrdering: Boolean,
   solutionAvailable: Boolean,
   `type`: Type

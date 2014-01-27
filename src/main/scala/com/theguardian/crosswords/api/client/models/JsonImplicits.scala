@@ -28,12 +28,14 @@ object JsonImplicits {
     def reads(json: JsValue): JsResult[Type] = json match {
       case JsString("cryptic") => JsSuccess(Cryptic)
       case JsString("quick") => JsSuccess(Quick)
+      case JsString("quiptic") => JsSuccess(Quiptic)
       case _ => JsError("Type must be either 'cryptic' or 'quick'")
     }
 
     def writes(o: Type): JsValue = o match {
       case Cryptic => JsString("cryptic")
       case Quick => JsString("quick")
+      case Quiptic => JsString("quiptic")
     }
   }
 
