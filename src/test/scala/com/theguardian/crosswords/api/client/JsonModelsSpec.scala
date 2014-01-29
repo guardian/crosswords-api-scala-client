@@ -11,10 +11,12 @@ import com.theguardian.crosswords.api.client.models.Creator
 import play.api.libs.json.JsSuccess
 
 class JsonModelsSpec extends Specification with ResourcesHelper {
+  def getTestResource(path: String) =
+    slurp(path).getOrElse(throw new RuntimeException(s"Could not find test resource $path"))
+
   "Json.parse" should {
     "be able to parse a response for a given date" in {
-      val resource = slurp("2014-01-24.json")
-        .getOrElse(throw new RuntimeException("Could not find test resource 2014-01-24.json"))
+      val resource = getTestResource("2014-01-24.json")
 
       val JsSuccess(result, _) = Json.fromJson[DateResponse](Json.parse(resource))
 
@@ -32,8 +34,7 @@ class JsonModelsSpec extends Specification with ResourcesHelper {
     }
 
     "be able to parse a response containing 'quiptic' crosswords" in {
-      val resource = slurp("2014-01-27.json")
-        .getOrElse(throw new RuntimeException("Could not find test resource 2014-01-27.json"))
+      val resource = getTestResource("2014-01-27.json")
 
       val JsSuccess(result, _) = Json.fromJson[DateResponse](Json.parse(resource))
 
@@ -41,6 +42,14 @@ class JsonModelsSpec extends Specification with ResourcesHelper {
       quiptic.`type` mustEqual Quiptic
       quiptic.number mustEqual 741
       quiptic.pdf mustEqual None
+    }
+
+    "be able to parse an entry without a format" in {
+      val resource = getTestResource("2014-01-29.json")
+
+      val JsSuccess(result, _) = Json.fromJson[DateResponse](Json.parse(resource))
+
+      result.crosswords("/cryptic/26169").entries(27).format mustEqual None
     }
   }
 }

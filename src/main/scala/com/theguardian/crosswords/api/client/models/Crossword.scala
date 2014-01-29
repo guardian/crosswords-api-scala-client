@@ -29,7 +29,7 @@ case class SeparatorLocations(
 case class Entry(
   clue: String,
   direction: Direction,
-  format: String,
+  format: Option[String],
   group: List[String],
   humanNumber: String,
   id: String,
