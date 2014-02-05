@@ -1,6 +1,7 @@
 package com.theguardian.crosswords.api.client.models
 
 import play.api.libs.json._
+import com.theguardian.crosswords.api.client.lib.Maps._
 
 object JsonImplicits {
   implicit val creatorFormats = Json.format[Creator]
@@ -24,19 +25,27 @@ object JsonImplicits {
 
   implicit val entryFormats = Json.format[Entry]
 
+  private val typeMap: Map[String, Type] = Map(
+    "cryptic" -> Cryptic,
+    "quick" -> Quick,
+    "prize" -> Prize,
+    "everyman" -> Everyman,
+    "azed" -> Azed,
+    "genius" -> Genius,
+    "speedy" -> Speedy,
+    "special" -> Special,
+    "quiptic" -> Quiptic
+  )
+
+  private val inverseTypeMap = typeMap.inverse
+
   implicit val typeFormats = new Format[Type] {
     def reads(json: JsValue): JsResult[Type] = json match {
-      case JsString("cryptic") => JsSuccess(Cryptic)
-      case JsString("quick") => JsSuccess(Quick)
-      case JsString("quiptic") => JsSuccess(Quiptic)
-      case _ => JsError("Type must be either 'cryptic' or 'quick'")
+      case JsString(s) if typeMap.contains(s) => JsSuccess(typeMap(s))
+      case _ => JsError(s"Crossword type string must be one of ${typeMap.keys.mkString(",")}")
     }
 
-    def writes(o: Type): JsValue = o match {
-      case Cryptic => JsString("cryptic")
-      case Quick => JsString("quick")
-      case Quiptic => JsString("quiptic")
-    }
+    def writes(o: Type): JsValue = JsString(inverseTypeMap(o))
   }
 
   implicit val crosswordFormats = Json.format[Crossword]
