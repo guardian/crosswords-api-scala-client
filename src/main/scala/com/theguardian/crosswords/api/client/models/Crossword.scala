@@ -45,6 +45,12 @@ sealed trait Type
 case object Cryptic extends Type
 case object Quick extends Type
 case object Quiptic extends Type
+case object Prize extends Type
+case object Everyman extends Type
+case object Azed extends Type
+case object Special extends Type
+case object Genius extends Type
+case object Speedy extends Type
 
 case class Crossword(
   creator: Option[Creator],
