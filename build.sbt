@@ -4,7 +4,7 @@ name := "crosswords-api-client"
 
 scalaVersion := "2.10.3"
 
-version := "0.1-SNAPSHOT"
+version := "0.2"
 
 resolvers ++= Seq(
   "Guardian GitHub Releases" at "http://guardian.github.io/maven/repo-releases",
