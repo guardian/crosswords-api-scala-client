@@ -37,7 +37,7 @@ case class Entry(
   number: Int,
   position: Position,
   separatorLocations: SeparatorLocations,
-  solution: String
+  solution: Option[String]
 )
 
 sealed trait Type

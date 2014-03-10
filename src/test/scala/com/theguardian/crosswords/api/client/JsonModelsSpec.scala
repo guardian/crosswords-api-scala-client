@@ -51,5 +51,15 @@ class JsonModelsSpec extends Specification with ResourcesHelper {
 
       result.crosswords("/cryptic/26169").entries(27).format mustEqual None
     }
+
+    "be able to parse prize crosswords" in {
+      val resource = getTestResource("2014-03-08.json")
+
+      val JsSuccess(result, _) = Json.fromJson[DateResponse](Json.parse(resource))
+
+      forall(result.crosswords("/prize/26202").entries) { entry =>
+        entry.solution mustEqual None
+      }
+    }
   }
 }
