@@ -2,7 +2,7 @@ package com.theguardian.crosswords.api.client
 
 import scala.concurrent.{ExecutionContext, Future}
 import org.joda.time.LocalDate
-import models.DateResponse
+import com.theguardian.crosswords.api.client.models.{Crossword, Type, DateResponse}
 import models.JsonImplicits._
 import play.api.libs.json.{JsError, JsSuccess, Reads, Json}
 
@@ -24,7 +24,7 @@ case class ApiClient(apiKey: String, http: Http, apiEndpoint: String = ApiClient
     }
 
   private def extract[A: Reads](response: Response): A = response match {
-    case Response(200, body, _) => extract[A](body)
+    case Response(200, _, body) => extract[A](body)
     case Response(errorCode, _, errorLine) => throw new StatusError(errorCode, errorLine)
   }
 
@@ -33,5 +33,7 @@ case class ApiClient(apiKey: String, http: Http, apiEndpoint: String = ApiClient
 
   def forToday(implicit executionContext: ExecutionContext): Future[DateResponse] = forDate(LocalDate.now())
 
-  /** TODO: add methods for retrieving crossword by number, etc. */
+  /** For some horrible reason you have to know the type of the crossword to look it up by ID */
+  def getCrossword(crosswordType: Type, number: Int)(implicit executionContext: ExecutionContext): Future[Crossword] =
+    http.get(UriHelper.forCrossword(apiEndpoint, crosswordType, number, apiKey)).map(extract[Crossword])
 }

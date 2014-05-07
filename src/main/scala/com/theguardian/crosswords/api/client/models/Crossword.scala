@@ -1,5 +1,6 @@
 package com.theguardian.crosswords.api.client.models
 
+import com.theguardian.crosswords.api.client.lib.Maps._
 import org.joda.time._
 
 case class Creator(
@@ -39,6 +40,24 @@ case class Entry(
   separatorLocations: SeparatorLocations,
   solution: Option[String]
 )
+
+object Type {
+  val byString: Map[String, Type] = Map(
+    "cryptic" -> Cryptic,
+    "quick" -> Quick,
+    "quiptic" -> Quiptic,
+    "prize" -> Prize,
+    "everyman" -> Everyman,
+    "azed" -> Azed,
+    "special" -> Special,
+    "genius" -> Genius,
+    "speedy" -> Speedy
+  )
+
+  val byType = byString.inverse
+
+  def fromString(typeString: String): Option[Type] = byString.get(typeString)
+}
 
 sealed trait Type
 
