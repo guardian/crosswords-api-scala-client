@@ -1,8 +1,8 @@
-package com.theguardian.crosswords.api.client
+package com.gu.crosswords.api.client
 
 import org.specs2.mutable.Specification
 import org.joda.time.LocalDate
-import com.theguardian.crosswords.api.client.models.Cryptic
+import com.gu.crosswords.api.client.models.Cryptic
 
 class UriHelperSpec extends Specification {
   "forDate" should {

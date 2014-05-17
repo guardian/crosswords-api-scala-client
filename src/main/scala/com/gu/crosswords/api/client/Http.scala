@@ -1,4 +1,4 @@
-package com.theguardian.crosswords.api.client
+package com.gu.crosswords.api.client
 
 import scala.concurrent.Future
 

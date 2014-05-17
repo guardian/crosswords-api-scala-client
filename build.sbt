@@ -5,7 +5,7 @@ releaseSettings
 
 sonatypeSettings
 
-organization := "com.theguardian"
+organization := "com.gu"
 
 name := "crosswords-api-client"
 

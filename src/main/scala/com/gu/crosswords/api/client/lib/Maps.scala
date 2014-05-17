@@ -1,4 +1,4 @@
-package com.theguardian.crosswords.api.client.lib
+package com.gu.crosswords.api.client.lib
 
 object Maps {
   implicit class RichMap[A, B](map: Map[A, B]) {

@@ -1,8 +1,8 @@
-package com.theguardian.crosswords.api.client
+package com.gu.crosswords.api.client
 
 import scala.concurrent.{ExecutionContext, Future}
 import org.joda.time.LocalDate
-import com.theguardian.crosswords.api.client.models.{Crossword, Type, DateResponse}
+import com.gu.crosswords.api.client.models.{Crossword, Type, DateResponse}
 import models.JsonImplicits._
 import play.api.libs.json.{JsError, JsSuccess, Reads, Json}
 

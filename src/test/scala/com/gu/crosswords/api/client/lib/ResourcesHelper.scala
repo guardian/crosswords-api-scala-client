@@ -1,4 +1,4 @@
-package com.theguardian.crosswords.api.client.lib
+package com.gu.crosswords.api.client.lib
 
 trait ResourcesHelper {
   def slurp(path: String): Option[String] =

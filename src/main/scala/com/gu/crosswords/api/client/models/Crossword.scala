@@ -1,6 +1,6 @@
-package com.theguardian.crosswords.api.client.models
+package com.gu.crosswords.api.client.models
 
-import com.theguardian.crosswords.api.client.lib.Maps._
+import com.gu.crosswords.api.client.lib.Maps._
 import org.joda.time._
 
 case class Creator(

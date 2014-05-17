@@ -1,7 +1,7 @@
-package com.theguardian.crosswords.api.client.models
+package com.gu.crosswords.api.client.models
 
 import play.api.libs.json._
-import com.theguardian.crosswords.api.client.lib.Maps._
+import com.gu.crosswords.api.client.lib.Maps._
 
 object JsonImplicits {
   implicit val creatorFormats = Json.format[Creator]

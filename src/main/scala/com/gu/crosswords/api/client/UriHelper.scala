@@ -1,7 +1,7 @@
-package com.theguardian.crosswords.api.client
+package com.gu.crosswords.api.client
 
 import org.joda.time.LocalDate
-import com.theguardian.crosswords.api.client.models.Type
+import com.gu.crosswords.api.client.models.Type
 
 object UriHelper {
   def forDate(endpoint: String, date: LocalDate, apiKey: String): String =

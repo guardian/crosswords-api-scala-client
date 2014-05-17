@@ -1,13 +1,10 @@
-package com.theguardian.crosswords.api.client
+package com.gu.crosswords.api.client
 
 import org.specs2.mutable.Specification
-import play.api.libs.json.{JsSuccess, Json}
-import com.theguardian.crosswords.api.client.lib.ResourcesHelper
+import play.api.libs.json.Json
+import com.gu.crosswords.api.client.lib.ResourcesHelper
 import models.JsonImplicits._
-import com.theguardian.crosswords.api.client.models._
-import com.theguardian.crosswords.api.client.models.DateResponse
-import scala.Some
-import com.theguardian.crosswords.api.client.models.Creator
+import com.gu.crosswords.api.client.models._
 import play.api.libs.json.JsSuccess
 
 class JsonModelsSpec extends Specification with ResourcesHelper {
