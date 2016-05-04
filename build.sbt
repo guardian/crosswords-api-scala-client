@@ -1,17 +1,11 @@
 import sbtrelease._
 import ReleaseStateTransformations._
 
-releaseSettings
-
-sonatypeSettings
-
 organization := "com.gu"
 
 name := "crosswords-api-client"
 
 scalaVersion := "2.11.4"
-
-crossScalaVersions := Seq("2.10.4", " 2.11.4")
 
 resolvers ++= Seq(
   "Guardian GitHub Releases" at "http://guardian.github.io/maven/repo-releases",
@@ -19,9 +13,9 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play-json" % "2.3.7",
-  "joda-time" % "joda-time" % "2.3",
-  "org.specs2" %% "specs2" % "2.3.11" % "test"
+  "com.typesafe.play" %% "play-json" % "2.5.3",
+  "joda-time" % "joda-time" % "2.9.3",
+  "org.specs2" %% "specs2-core" % "3.6" % "test"
 )
 
 description := "Scala client for the Guardian's Crosswords API"
@@ -44,9 +38,9 @@ pomExtra := (
 
 licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 
-ReleaseKeys.crossBuild := true
+releaseCrossBuild := true
 
-ReleaseKeys.releaseProcess := Seq[ReleaseStep](
+releaseProcess := Seq[ReleaseStep](
   checkSnapshotDependencies,
   inquireVersions,
   runClean,
@@ -54,12 +48,9 @@ ReleaseKeys.releaseProcess := Seq[ReleaseStep](
   setReleaseVersion,
   commitReleaseVersion,
   tagRelease,
-  ReleaseStep(
-    action = state => Project.extract(state).runTask(PgpKeys.publishSigned, state)._1,
-    enableCrossBuild = true
-  ),
+  ReleaseStep(action = Command.process("publishSigned", _), enableCrossBuild = true),
   setNextVersion,
   commitNextVersion,
-  ReleaseStep(state => Project.extract(state).runTask(SonatypeKeys.sonatypeReleaseAll, state)._1),
+  ReleaseStep(action = Command.process("sonatypeReleaseAll", _), enableCrossBuild = true),
   pushChanges
 )
