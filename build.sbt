@@ -5,7 +5,7 @@ organization := "com.gu"
 
 name := "crosswords-api-client"
 
-scalaVersion := "2.11.4"
+scalaVersion := "2.11.7"
 
 resolvers ++= Seq(
   "Guardian GitHub Releases" at "http://guardian.github.io/maven/repo-releases",
