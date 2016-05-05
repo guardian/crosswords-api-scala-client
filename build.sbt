@@ -5,7 +5,7 @@ organization := "com.gu"
 
 name := "crosswords-api-client"
 
-scalaVersion := "2.11.7"
+scalaVersion := "2.11.8"
 
 resolvers ++= Seq(
   "Guardian GitHub Releases" at "http://guardian.github.io/maven/repo-releases",
@@ -15,7 +15,7 @@ resolvers ++= Seq(
 libraryDependencies ++= Seq(
   "com.typesafe.play" %% "play-json" % "2.5.3",
   "joda-time" % "joda-time" % "2.9.3",
-  "org.specs2" %% "specs2-core" % "3.6" % "test"
+  "org.specs2" %% "specs2-core" % "3.7" % "test"
 )
 
 description := "Scala client for the Guardian's Crosswords API"
