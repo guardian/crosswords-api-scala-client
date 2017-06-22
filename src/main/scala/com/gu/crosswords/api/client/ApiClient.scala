@@ -13,7 +13,7 @@ object ApiClient {
 case class StatusError(statusCode: Int, statusLine: String)
   extends Exception(s"Expected 200 OK, got $statusCode $statusLine")
 case class ParseError(cause: JsError)
-  extends Exception("Unable to parse JSON returned by Crosswords API")
+  extends Exception(s"Unable to parse JSON returned by Crosswords API. Cause: ${cause.errors}")
 
 case class ApiClient(apiKey: String, http: Http, apiEndpoint: String = ApiClient.apiEndpoint) {
   /** Extracts A from the JSON string or throws ParseError */

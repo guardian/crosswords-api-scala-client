@@ -34,7 +34,8 @@ object JsonImplicits {
     "genius" -> Genius,
     "speedy" -> Speedy,
     "special" -> Special,
-    "quiptic" -> Quiptic
+    "quiptic" -> Quiptic,
+    "weekend" -> Weekend
   )
 
   private val inverseTypeMap = typeMap.inverse
