@@ -5,7 +5,7 @@ organization := "com.gu"
 
 name := "crosswords-api-client"
 
-scalaVersion := "2.11.8"
+scalaVersion := "2.11.11"
 
 resolvers ++= Seq(
   "Guardian GitHub Releases" at "http://guardian.github.io/maven/repo-releases",
@@ -13,8 +13,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
-  "com.typesafe.play" %% "play-json" % "2.5.3",
-  "joda-time" % "joda-time" % "2.9.3",
+  "com.typesafe.play" %% "play-json" % "2.5.15",
+  "joda-time" % "joda-time" % "2.9.9",
   "org.specs2" %% "specs2-core" % "3.7" % "test"
 )
 
@@ -25,16 +25,16 @@ scmInfo := Some(ScmInfo(
   "scm:git:git@github.com:guardian/crosswords-api-scala-client.git"
 ))
 
-pomExtra := (
+pomExtra :=
   <url>https://github.com/guardian/crosswords-api-scala-client</url>
     <developers>
       <developer>
-        <id>robertberry</id>
-        <name>Robert Berry</name>
-        <url>https://github.com/robertberry</url>
+        <id>theguardian</id>
+        <name>The Guardian</name>
+        <url>https://github.com/guardian/</url>
       </developer>
     </developers>
-  )
+
 
 licenses := Seq("Apache V2" -> url("http://www.apache.org/licenses/LICENSE-2.0.html"))
 

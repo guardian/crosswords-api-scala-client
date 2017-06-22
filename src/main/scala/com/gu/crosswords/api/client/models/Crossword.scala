@@ -51,7 +51,8 @@ object Type {
     "azed" -> Azed,
     "special" -> Special,
     "genius" -> Genius,
-    "speedy" -> Speedy
+    "speedy" -> Speedy,
+    "weekend" -> Weekend
   )
 
   val byType = byString.inverse
@@ -70,6 +71,7 @@ case object Azed extends Type
 case object Special extends Type
 case object Genius extends Type
 case object Speedy extends Type
+case object Weekend extends Type
 
 case class Crossword(
   creator: Option[Creator],
